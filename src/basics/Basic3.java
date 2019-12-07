@@ -6,12 +6,12 @@ public class Basic3 {
     public  static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         System.out.println("Iveskite pirma sveika skaiciu");
-        double sk1 = scan.nextDouble();
+        int sk1 = scan.nextInt();
         System.out.println("Iveskite antra sveika skaiciu");
-        double sk2 = scan.nextDouble();
+        int sk2 = scan.nextInt();
 
-        double dsk = sk1 / sk2;
-        System.out.printf("%.3f",dsk);
+        int dsk = sk1 / sk2;
+        System.out.printf("%.3f",(double) dsk);
         System.out.println();
     }
 }
