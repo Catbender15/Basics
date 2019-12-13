@@ -20,6 +20,7 @@ public class TicTacToe {
         do {
             wx0 = checkXOr0(ejimas,wx0);
             System.out.println("Kur norite istatyti? (iveskite koordinates nuo (0,0)): ");
+            System.out.println("Jei norite iseiti is zaidimo parasykite vieno is koordinaciu 9: ");
             System.out.print("eilute: ");
             x = scancord.nextInt();
             System.out.print("stulpelis: ");
@@ -30,6 +31,7 @@ public class TicTacToe {
                 cor[x][y] = wx0;
                 printTicTacToe();
             }
+            if((y == 9) || (x == 9)){ check = false; }
             check = backXAnswer(check);
             check = back0Answer(check);
         } while (check);
@@ -131,11 +133,19 @@ public class TicTacToe {
         }
     }
     private static boolean checkInput(int x, int y){
-        if((x > 2) || (x < 0) || (y >2) || (y < 0)){
+        if((x > 2) || (x < 0) || (y >2) || (y < 0) || (x == 9) || (y == 9)){
             System.out.println();
-            System.out.println("Per dideles koordinates parasiai (koordinates prasideda nuo (0;0) iki (2;2))!!!  Turesi per nauja eiti  :)");
-            System.out.println();
-            return false;
+            if((x != 9) && (y != 9)){
+                System.out.println("Per dideles koordinates parasiai (koordinates prasideda nuo (0;0) iki (2;2))!!!  Turesi per nauja eiti  :)");
+                System.out.println();
+                return false;
+            }
+            if((x == 9) ||( y == 9)){
+                System.out.println("Tu sekmingai baigiai žaidima!! ;)");
+                System.out.println();
+                return false;
+            }
+
         }
         if((cor[x][y].equals("x")) || (cor[x][y].equals("0"))){
             System.out.println();
@@ -143,6 +153,7 @@ public class TicTacToe {
             System.out.println();
             return false;
         }
+
         return true;
     }
     private static String checkXOr0(int ejimas, String wx0){
@@ -158,3 +169,4 @@ public class TicTacToe {
     }
 
 }
+
