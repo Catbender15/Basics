@@ -5,7 +5,6 @@ import Object.Object3.TicTacToe;
 import java.util.Random;
 
 public class TicTacToeAi {
-
     private static int[][] value = {
             {0, 0, 0},
             {0, 0, 0},
@@ -13,14 +12,13 @@ public class TicTacToeAi {
     };
     private int xAI;
     private int yAI;
+
     public void mainAI(){
         calculateValue();
         printValue();
-        getCor(xAI,yAI);
-
+        getCor();
     }
-
-    private static void getCor(int xAI, int yAI){
+    private void getCor(){
         Random random = new Random();
         int[] xM = {0,0,0,0,0,0,0,0,0};
         int[] yM = {0,0,0,0,0,0,0,0,0};
@@ -39,13 +37,9 @@ public class TicTacToeAi {
                 }
             }
         }
-        System.out.println(maxValue);
         int s = random.nextInt(m);
-        System.out.println(s);
-       xAI = xM[s];
+        xAI = xM[s];
         yAI = yM[s];
-        System.out.println("xAI " + xAI);
-        System.out.println("yAI " + yAI);
     }
     private static void printValue(){
         System.out.println("Galimybe laimeti:");
@@ -88,7 +82,7 @@ public class TicTacToeAi {
         };
         for (int i = 0; i <= 2; i++) {
             for (int a = 0; a <= 2; a++) {
-                if((cor[i][a].equals("x")) || (cor[i][a].equals("0"))){
+                if((cor[i][a].equals("X")) || (cor[i][a].equals("0"))){
                     win[i][a] = -1;
                 }else if(i == 0 && a == 0){
                     win[i][a] = calcWin(0,1,0,2, win[i][a]);
@@ -140,7 +134,7 @@ public class TicTacToeAi {
         };
         for (int i = 0; i <= 2; i++) {
             for (int a = 0; a <= 2; a++) {
-                if((cor[i][a].equals("x")) || (cor[i][a].equals("0"))){
+                if((cor[i][a].equals("X")) || (cor[i][a].equals("0"))){
                     lose[i][a] = -1;
                 }else if(i == 0 && a == 0){
                     lose[i][a] = calcLose(0,1,0,2, lose[i][a]);
@@ -182,31 +176,31 @@ public class TicTacToeAi {
         }
         return lose;
     }
+
     private static int calcWin(int x, int z, int x2, int z2, int calc_win){
         TicTacToeMain ticTacToeMain = new TicTacToeMain();
         String[][] cor = ticTacToeMain.getCor();
         int win = calc_win;
-        if((cor[x][z].equals("x")) && (cor[x2][z2].equals("x"))){ win = 4;  }
-        if (((cor[x2][z2].equals("x"))) && ((cor[x][z].equals(" "))) || ((cor[x][z].equals("x")) && (cor[x2][z2].equals(" ")))){
+        if((cor[x][z].equals("X")) && (cor[x2][z2].equals("X"))){ win = 4;  }
+        if (((cor[x2][z2].equals("X"))) && ((cor[x][z].equals(" "))) || ((cor[x][z].equals("X")) && (cor[x2][z2].equals(" ")))){
             if(win < 1){
                 win = 1;
             }
         }
         return win;
     }
-
     private static int calcLose(int x, int z, int x2, int z2, int calc_lose){
         TicTacToeMain ticTacToeMain = new TicTacToeMain();
         String[][] cor = ticTacToeMain.getCor();
 
         int lose = calc_lose;
-        if((cor[x][z].equals("0")) && (cor[x2][z2].equals("0"))){ lose = 2;  }
+        if((cor[x][z].equals("0")) && (cor[x2][z2].equals("0"))){ lose = 4;  }
         if (((cor[x2][z2].equals("0"))) || ((cor[x][z].equals("0")))){
             if(lose < 1){
                 lose = 1;
             }
         }
-        if((((cor[x2][z2].equals("x"))) && ((cor[x][z].equals("0")))) || (((cor[x2][z2].equals("0"))) || ((cor[x][z].equals("x"))))){
+        if((((cor[x2][z2].equals("X"))) && ((cor[x][z].equals("0")))) || (((cor[x2][z2].equals("0"))) || ((cor[x][z].equals("X"))))){
             if(lose !=2){
                 lose = 0;
             }
@@ -214,15 +208,9 @@ public class TicTacToeAi {
         return lose;
     }
 
-    public TicTacToeAi() {
-        this.xAI = xAI;
-        this.yAI = yAI;
-    }
-
     public int getxAI() {
         return xAI;
     }
-
     public int getyAI() {
         return yAI;
     }
