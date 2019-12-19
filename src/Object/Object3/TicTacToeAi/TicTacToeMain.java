@@ -36,15 +36,12 @@ public class TicTacToeMain {
                 System.out.println("Jei norite iseiti is zaidimo parasykite vieno is koordinaciu 9: ");
                 x = scanXY("Eilute");
                 y = scanXY("Stulpelis");
-
             }
             if(wx0.equals("X")){
                 x = ticTacToeAi.getxAI();
                 y = ticTacToeAi.getyAI();
-                //check = checkInput(x, y);
             }
-
-            if(check == true) {
+            if(checkInput(x, y) == true) {
                 ejimas++;
                 cor[x][y] = wx0;
                 printTicTacToe();
@@ -53,47 +50,45 @@ public class TicTacToeMain {
             check = backXAnswer(check);
             check = back0Answer(check);
         } while (check);
-
-
     }
     private static boolean backXAnswer(boolean check){
         {
             //eilute
-            if ((cor[0][0].equals("x")) && (cor[0][1].equals("x")) && (cor[0][2].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[0][0].equals("")) && (cor[0][1].equals("X")) && (cor[0][2].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
-            if ((cor[1][0].equals("x")) && (cor[1][1].equals("x")) && (cor[1][2].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[1][0].equals("X")) && (cor[1][1].equals("X")) && (cor[1][2].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
-            if ((cor[2][0].equals("x")) && (cor[2][1].equals("x")) && (cor[2][2].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[2][0].equals("X")) && (cor[2][1].equals("X")) && (cor[2][2].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
             //stulpelis
-            if ((cor[0][0].equals("x")) && (cor[1][0].equals("x")) && (cor[2][0].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[0][0].equals("X")) && (cor[1][0].equals("X")) && (cor[2][0].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
-            if ((cor[0][1].equals("x")) && (cor[1][1].equals("x")) && (cor[2][1].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[0][1].equals("X")) && (cor[1][1].equals("X")) && (cor[2][1].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
-            if ((cor[0][2].equals("x")) && (cor[1][2].equals("x")) && (cor[2][2].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[0][2].equals("X")) && (cor[1][2].equals("X")) && (cor[2][2].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
             //Istrizaine
-            if ((cor[0][0].equals("x")) && (cor[1][1].equals("x")) && (cor[2][2].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[0][0].equals("X")) && (cor[1][1].equals("X")) && (cor[2][2].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
-            if ((cor[0][2].equals("x")) && (cor[1][1].equals("x")) && (cor[2][0].equals("x"))) {
-                System.out.println("Laimėjo x");
+            if ((cor[0][2].equals("X")) && (cor[1][1].equals("X")) && (cor[2][0].equals("X"))) {
+                System.out.println("Laimėjo X");
                 return false;
             }
-        } // x atsakymai
+        } // X atsakymai
         return check;
     }
     private static boolean back0Answer(boolean check){
@@ -137,26 +132,21 @@ public class TicTacToeMain {
         return check;
     }
     private static boolean checkInput(int x, int y){
-        if((x > 2) || (x < 0) || (y >2) || (y < 0) || (x == 9) || (y == 9)|| (x == 12) || (y == 12)){
+        if((x > 2) || (x < 0) || (y >2) || (y < 0) || (x == 9) || (y == 9)){
             System.out.println();
             if(((x != 9) && (y != 9)) && ((x != 12) && (y != 12))){
                 System.out.println("Per dideles koordinates parasiai (koordinates prasideda nuo (0;0) iki (2;2))!!!  Turesi per nauja eiti  :)");
                 System.out.println();
                 return false;
             }
-            if(((x == 9) ||( y == 9) && ((x != 12) && (y != 12)))){
+            if(((x == 9) ||( y == 9))){
                 System.out.println("Tu sekmingai baigiai žaidima!! ;)");
-                System.out.println();
-                return false;
-            }
-            if((x == 12) && (y == 12)){
-                System.out.println("Žaidimo klaida, neisiveda zaidejo arba AI koordinates");
                 System.out.println();
                 return false;
             }
 
         }
-        if((cor[x][y].equals("x")) || (cor[x][y].equals("0"))){
+        if((cor[x][y].equals("X")) || (cor[x][y].equals("0"))){
             System.out.println();
             System.out.println("Tu negali uzdeti ant kito zaidejo zenklo!!!  Turesi per nauja eiti :)");
             System.out.println();
@@ -182,7 +172,7 @@ public class TicTacToeMain {
     private static String checkXOr0(int ejimas, String wx0){
         if((ejimas % 2) != 0){
             System.out.println("Dabar eina x ");
-            wx0 = "x";
+            wx0 = "X";
         }
         if((ejimas % 2) == 0){
             System.out.println("Dabar eina 0 ");
