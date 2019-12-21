@@ -2,7 +2,7 @@ package Object.Object7;
 
 import java.util.Scanner;
 
-public class Object8 {
+public class Object7 {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int kiek = scanner.nextInt();
